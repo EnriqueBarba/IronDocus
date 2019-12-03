@@ -3,15 +3,11 @@ const bcrypt = require('bcrypt');
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const SALT_WORK_FACTOR = 10;
 
-const generateRandomToken = () => {
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-}
-
 const userSchema = new mongoose.Schema({
   fullname: {
     type: String,
     required: [true, 'Name is required'],
-    minlength: [3, 'Name needs at last 8 chars'],
+    minlength: [3, 'Name needs at last 3 chars'],
     trim: true
   },
   email: {
@@ -25,14 +21,14 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],
-    minlength: [8, 'Password needs at last 8 chars']
+    minlength: [6, 'Password needs at last 6 chars']
   },
   avatar: {
     type: String,
   },
   departamento: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: '', //Departameto
+    ref: 'Depart',
     required: true
   },
   admin: {
