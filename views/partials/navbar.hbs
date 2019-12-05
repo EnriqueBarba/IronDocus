@@ -1,10 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container d-flex align-items-center">
-    <div>
-      <a class="navbar-brand" href="/">
-        <i class=""></i>
-        <strong>IronDocus</strong>
-      </a>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>IronDocus</h3>
     </div>
+
+    <ul class="list-unstyled components">
+      <p>Departs</p>
+      <li class="active">
+      <li>
+        <a href="#">Accounts and Finance</a>
+      </li>
+      <li>
+        <a href="#">HR</a>
+      </li>
+      <li>
+        <a href="#">Research and development</a>
+      </li>
+      <li>
+        <a href="#">IT services</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+
+      <button type="button" id="sidebarCollapse" class="btn btn-info">
+        <i class="fas fa-align-left"></i>
+        <span>Toggle Sidebar</span>
+      </button>
+
+    </div>
+    <form action="/logout" method="POST">
+      <button class="btn btn-danger" type="submit">Log Out</button>
+    </form>
   </div>
-</nav>
+</div>
