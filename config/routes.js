@@ -6,4 +6,9 @@ const upload = require('../config/cloudinary.config');
 
 module.exports = router;
 
-router.get('/', authMiddleware.isNotAuthenticated, usersController.login)
+router.get('/', authMiddleware.isAuthenticated, usersController.index)
+router.get('/admin/', authMiddleware.isAdmin, usersController.adminIndex)
+
+
+router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
+router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
