@@ -1,0 +1,15 @@
+<h1>Welcome admin {{currentUser.fullname}}</h1>
+
+{{#if users}}
+    <ul>
+    {{#each users as |user|}}
+        <li>{{user.fullname}}</li>
+    {{/each}}
+    </ul>
+{{else}}
+    <h3>There is not pending users to be validated</h3>
+{{/if}}
+
+<form action="/logout" method="POST">
+    <button class="btn btn-danger" type="submit">Log Out</button>
+</form>
