@@ -4,18 +4,21 @@ const mailer = require('../config/mailer.config');
 
 
 module.exports.index = (_, res) => {
-  res.redirect('/user/index')
+  res.render('users/index')
 }
 
-module.exports.adminIndex = (_, res) => {
-  res.redirect('/user/adminIndex')
+module.exports.adminIndex = (req, res, next) => {
+  User.find({validated: false})
+    .then(users => {
+      res.render('users/adminIndex', {users})
+    }).catch(next)
 }
 
 module.exports.login = (_, res) => {
   res.render('users/login')
 }
 
-module.exports.doLogin = (_, res) => {
+module.exports.doLogin = (req, res, next) => {
 
   const { email, password } = req.body
   if (email && password) {
@@ -26,7 +29,11 @@ module.exports.doLogin = (_, res) => {
             .then(match => {
               if (match) {
                 req.session.user = user
-                res.redirect('/')
+                if (user.admin) {
+                  res.redirect('/admin/')
+                } else {
+                  res.redirect('/')
+                }
               } else {
                 req.session.genericError = "Wrong credentials"
                 res.redirect('/login')
@@ -40,4 +47,9 @@ module.exports.doLogin = (_, res) => {
     res.redirect('/login')
   }
 
+}
+
+module.exports.logOut = (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/login');
 }

@@ -12,3 +12,4 @@ router.get('/admin/', authMiddleware.isAdmin, usersController.adminIndex)
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
+router.post('/logout', authMiddleware.isAuthenticated, usersController.logOut)
