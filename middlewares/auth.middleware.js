@@ -10,7 +10,9 @@ module.exports.isAuthenticated = (req, res, next) => {
   module.exports.isAdmin = (req,res,next) => {
     if (req.session.user.admin) {
       next()
-    } 
+    } else {
+      res.redirect('/')
+    }
   }
   
   module.exports.isNotAuthenticated = (req, res, next) => {
