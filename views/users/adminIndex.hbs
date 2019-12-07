@@ -1,15 +1,27 @@
-<h1>Welcome admin {{currentUser.fullname}}</h1>
 
-{{#if users}}
-    <ul>
-    {{#each users as |user|}}
-        <li>{{user.fullname}}</li>
-    {{/each}}
-    </ul>
-{{else}}
-    <h3>There is not pending users to be validated</h3>
-{{/if}}
-
-<form action="/logout" method="POST">
-    <button class="btn btn-danger" type="submit">Log Out</button>
-</form>
+    <h1 class="text-center">Welcome  <i>{{currentUser.fullname}}</i></h1>
+    {{#if users}}
+        <h3>Pending requests:</h3>
+        <div class="d-flex flex-row justify-content-around">
+        {{#each users as |user|}}
+            <div class="card col col-4 mb-2 mt-2">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.email}}</h5>
+                    <h6 class="card-subtitle">Fullname:</h6>
+                    <p class="card-text">{{user.fullname}}</p>
+                    <h6 class="card-subtitle">Department:</h6>
+                    <p class="card-text">{{user.depart.name}}</p>
+                    <hr>
+                    <form action="/admin/validate/{{user._id}}" method="POST" class="d-inline">
+                        <button type="submit" class="card-link btn btn-primary">Validate</button>
+                    </form>
+                    <form action="/admin/decline/{{user._id}}" method="POST" class="d-inline">
+                        <button type="submit" class="card-link btn btn-danger">Decline</button>
+                    </form>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    {{else}}
+        <h3>There is not pending users to be validated</h3>
+    {{/if}}

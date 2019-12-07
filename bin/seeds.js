@@ -27,7 +27,7 @@ User.deleteMany({})
                     email: "francisco@gmail.com",
                     password: "francisco", 
                     avatar: "",
-                    departamento: Depart3._id,
+                    depart: Depart3._id,
                     admin: false,
                     validated: false
                 }) 
@@ -38,7 +38,7 @@ User.deleteMany({})
                     email: "julio@gmail.com",
                     password: "juliog", 
                     avatar: "",
-                    departamento: Depart3._id,
+                    depart: Depart3._id,
                     admin: false,
                     validated: false
                 }) 
@@ -55,7 +55,7 @@ User.deleteMany({})
                     email: "irondocus@gmail.com",
                     password: "adminadmin", 
                     avatar: "",
-                    departamento: Depart4._id,
+                    depart: Depart4._id,
                     admin: true,
                     validated: true
                 }) 

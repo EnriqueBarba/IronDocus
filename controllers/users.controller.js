@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const Depart = require('../models/depart.model');
 const mongoose = require('mongoose');
 const mailer = require('../config/mailer.config');
 
@@ -9,6 +10,7 @@ module.exports.index = (_, res) => {
 
 module.exports.adminIndex = (req, res, next) => {
   User.find({validated: false})
+    .populate('depart')
     .then(users => {
       res.render('users/adminIndex', {users})
     }).catch(next)
