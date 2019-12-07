@@ -20,3 +20,7 @@
     border-radius: 1rem;
     max-height: 20rem
 }
+
+div .alert.alert-danger, .alert.alert-success {
+    margin:0;
+}
