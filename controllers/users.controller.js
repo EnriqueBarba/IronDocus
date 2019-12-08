@@ -16,6 +16,36 @@ module.exports.adminIndex = (req, res, next) => {
     }).catch(next)
 }
 
+module.exports.adminValidate = (req, res, next) => {
+  const userId = req.params.userId
+  User.findById(userId)
+  .then( user => {
+    if (user) {
+      user.validated = true
+      user.save()
+      .then( () => {
+        req.session.genericSuccess = 'User request was approved correctly'
+        res.redirect('/admin/')
+      })
+      .catch(next)
+    } else {
+      req.session.genericError = 'User was not found'
+      res.redirect('/admin/')
+    }
+  })
+  .catch(next)
+}
+
+module.exports.adminDecline = (req, res, next) => {
+  const userId = req.params.userId
+  User.findByIdAndDelete(userId)
+  .then( () => {
+    req.session.genericSuccess = 'User request was declined correctly'
+    res.redirect('/admin/')
+  })
+  .catch(next)
+}
+
 module.exports.login = (_, res) => {
   res.render('users/login')
 }

@@ -11,12 +11,9 @@
                 <h6 class="card-subtitle">Department:</h6>
                 <p class="card-text">{{user.depart.name}}</p>
                 <hr>
-                <form action="/admin/validate/{{user._id}}" method="POST" class="d-inline">
-                    <button type="submit" class="card-link btn btn-primary">Validate</button>
-                </form>
-                <form action="/admin/decline/{{user._id}}" method="POST" class="d-inline">
-                    <button type="submit" class="card-link btn btn-danger">Decline</button>
-                </form>
+
+                <a href="/admin/validate/{{user._id}}" class="card-link btn btn-primary">Validate</a>
+                <a href="/admin/decline/{{user._id}}" class="card-link btn btn-danger">Decline</a>
             </div>
         </div>
     {{/each}}
