@@ -67,15 +67,18 @@ module.exports.doLogin = (req, res, next) => {
                   res.redirect('/')
                 }
               } else {
-                req.session.genericError = "Wrong credentials"
+                req.session.genericError = "Wrong credentials or user not validated"
                 res.redirect('/login')
               }
             })
+        } else {
+          req.session.genericError = "Wrong credentials or user not validated"
+          res.redirect('/login')
         }
       })
       .catch(next)
   } else {
-    req.session.genericError = "Wrong credentials"
+    req.session.genericError = "Wrong credentials or user not validated"
     res.redirect('/login')
   }
 
