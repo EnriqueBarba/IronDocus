@@ -3,9 +3,12 @@ require('../config/db.config')
 const User = require('../models/user.model')
 const Depart = require('../models/depart.model')
 const Category = require('../models/category.model')
+const Docu = require('../models/document.model')
 
 User.deleteMany({})
         .then(() => Depart.deleteMany({}))
+        .then(() => Category.deleteMany()
+        .then(() => Docu.deleteMany()
         .then(() => {
             const Depart1 = new Depart({
                 name: "Accounts and Finance"
@@ -43,6 +46,22 @@ User.deleteMany({})
                     validated: false
                 }) 
                 u3.save();
+
+                const cat1 = new Category({
+                    name: "categoryTest",
+                    depart: Depart3._id
+                })
+                cat1.save()
+                .then( () => {
+                    const docu1 = new Docu({
+                        title: 'Document1',
+                        content: '',
+                        files: '',
+                        author: u3._id,
+                        category: cat1._id
+                    })
+                    docu1.save()
+                });
             });
 
             const Depart4 = new Depart({
@@ -62,5 +81,7 @@ User.deleteMany({})
                 u1.save();
             });
             
-        })
+            
+        })))
         .catch(err => console.log('Error =>' + err))
+
