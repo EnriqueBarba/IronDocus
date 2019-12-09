@@ -1,11 +1,28 @@
 const User = require('../models/user.model');
 const Depart = require('../models/depart.model');
+const Docu = require('../models/document.model');
+const Cat = require('../models/category.model');
 const mongoose = require('mongoose');
 const mailer = require('../config/mailer.config');
 
 
-module.exports.index = (_, res) => {
-  res.render('users/index')
+module.exports.index = (req, res, next) => {
+  const departId = req.currentUser.depart
+  Cat.find( {depart: departId} )
+    .then( results => {
+      const cats = []
+      results.forEach( e => cats.push(e._id) )
+
+      Docu.find( {category: {$in: cats} } )
+        .populate('author')
+        .limit(5)
+        .sort( {createdAt: -1} )
+        .then( docs => {
+          res.render('users/index', {docs})
+        })
+        .catch(next)
+    })
+    .catch(next)
 }
 
 module.exports.adminIndex = (req, res, next) => {
