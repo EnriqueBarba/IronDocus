@@ -10,6 +10,7 @@ router.get('/', authMiddleware.isAuthenticated, usersController.index)
 router.get('/admin/', authMiddleware.isAdmin, usersController.adminIndex)
 router.get('/admin/validate/:userId', authMiddleware.isAdmin, usersController.adminValidate)
 router.get('/admin/decline/:userId', authMiddleware.isAdmin, usersController.adminDecline)
+router.get('/users/new', usersController.new)
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
