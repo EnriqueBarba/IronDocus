@@ -84,6 +84,10 @@ module.exports.doLogin = (req, res, next) => {
 
 }
 
+module.exports.new = (_, res) => {
+  res.render('users/new')
+}
+
 module.exports.logOut = (req, res, next) => {
   req.session.destroy();
   res.redirect('/login');

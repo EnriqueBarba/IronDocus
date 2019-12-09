@@ -21,6 +21,19 @@
     max-height: 20rem
 }
 
+#signupCont{
+    background-image: url("../img/signup-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+#form-signup-cont{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+}
+
 div .alert.alert-danger, .alert.alert-success {
     margin:0;
 }
