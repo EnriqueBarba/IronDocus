@@ -102,7 +102,33 @@ module.exports.doLogin = (req, res, next) => {
 }
 
 module.exports.new = (_, res) => {
-  res.render('users/new')
+  Depart.find()
+		.then(
+			departs => {
+				res.render('users/new', { user: new User(), departs: departs });
+			}
+		).catch(
+			error => next(error)
+		);
+}
+
+
+module.exports.create = (req, res, next) => {
+  const newUser = new User(req.body);
+	newUser.save()
+		.then(
+			user => {
+				res.redirect('/users');
+			}
+		).catch(
+			error => {
+				if (error instanceof mongoose.Error.ValidationError) {
+
+				}
+				next(error);
+			}
+		);
+ 
 }
 
 module.exports.logOut = (req, res, next) => {
