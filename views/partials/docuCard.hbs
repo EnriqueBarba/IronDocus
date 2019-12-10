@@ -1,7 +1,9 @@
-<div class="card col col-3 mb-2 mt-2">
+<a href="/documents/{{this.category.name}}/{{this.title}}" class="card col col-3 mb-2 mt-2 docuCard">
     <div class="card-body">
         <h5 class="card-title"><b>{{this.title}}</b></h5>
-        <p><i class="card-text">{{this.createdAt}}</i></p>
-        <h6 class="card-subtitle"><b>Author: </b>{{this.author.fullname}}</h6>
+        <p class="card-subtitle"><i>{{#date this.createdAt }}{{/date}}</i></p>
+        <hr>
+        <p class="card-text h6"><b>Author: </b>{{this.author.fullname}}</p>
+        <p class="card-text h6"><b>Category: </b>{{this.category.name}}</p>
     </div>
-</div>
+</a>
