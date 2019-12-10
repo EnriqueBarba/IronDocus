@@ -4,7 +4,7 @@
 
         <h2 class="text-center mt-3 mb-3">Welcome to IronDocus</h2>
 
-        <form action="" method="POST" class="mb-3" autocomplete="off">
+        <form action="/users/new" method="POST" class="mb-3" autocomplete="off">
 
             <div class="form-group">
                 <label for="fullname">Fullname:</label>
@@ -54,19 +54,19 @@
             </div>
 
 
-            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Depart:</label>
-            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                <option selected value="Accounts and Finance">Accounts and Finance</option>
-                <option value="HR">Human Resources</option>
-                <option value="Research and development">Research and development</option>
-                <option value="IT services">IT services</option>
-            </select>
+            <label class="my-1 mr-2" for="depart">Depart:</label>
+            <select name="depart" id="depart" class="custom-select">
+				{{#each departs as |depart|}}
+				<option value="{{depart.id}}" {{#equals depart.id ../users.depart}}selected{{/equals}}>
+					{{depart.name}}</option>
+				{{/each}}
+			</select>
 
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-success mt-2">
                 Sign Up
             </button>
 
-            <a class="btn btn-info" href="/login">Back to Login</a>
+            <a class="btn btn-info mt-2" href="/login">Back to Login</a>
 
         </form>
     </div>
