@@ -37,3 +37,15 @@
 div .alert.alert-danger, .alert.alert-success {
     margin:0;
 }
+
+a.docuCard {
+    text-decoration: none;
+    color:black;
+    box-shadow: grey 2px 1px 5px;
+}
+
+a.docuCard:hover {
+    text-decoration: none;
+    color:black;
+    box-shadow:  blue 2px 1px 5px;
+}
