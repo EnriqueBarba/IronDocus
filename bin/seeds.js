@@ -11,17 +11,41 @@ User.deleteMany({})
         .then(() => Docu.deleteMany()
         .then(() => {
             const Depart1 = new Depart({
-                name: "Accounts and Finance"
+                name: "Accounts and Finances", 
+                flag: "AAFF"
             })
             Depart1.save();
+            
+            const catIns = new Category({
+                name: "Insurances",
+                depart: Depart1._id
+            })
+            catIns.save()
+            const catBudget = new Category({
+                name: "Budgets",
+                depart: Depart1._id
+            })
+            catBudget.save()
 
             const Depart2 = new Depart({
-                name: "HR"
+                name: "Human Resources",
+                flag: "HHRR"
             })
             Depart2.save();
+            const catHol = new Category({
+                name: "Holidays",
+                depart: Depart2._id
+            })
+            catHol.save()
+            const catCV = new Category({
+                name: "CVs",
+                depart: Depart2._id
+            })
+            catCV.save()
 
             const Depart3 = new Depart({
-                name: "Research and development"
+                name: "Research and development",
+                flag: "RD"
             })
             Depart3.save()
             .then(() => {
@@ -47,11 +71,21 @@ User.deleteMany({})
                 }) 
                 u3.save();
 
-                const cat1 = new Category({
-                    name: "categoryTest",
+                const catSoft = new Category({
+                    name: "Software",
                     depart: Depart3._id
                 })
-                cat1.save()
+                catSoft.save()
+                const catBugs = new Category({
+                    name: "Bugs Fix",
+                    depart: Depart3._id
+                })
+                catBugs.save()
+                const catDB = new Category({
+                    name: "Database",
+                    depart: Depart3._id
+                })
+                catDB.save()
                 .then( () => {
                     const docu1 = new Docu({
                         title: 'Document1',
@@ -65,7 +99,8 @@ User.deleteMany({})
             });
 
             const Depart4 = new Depart({
-                name: "IT services"
+                name: "IT services", 
+                flag: "ITSS"
             })
             Depart4.save()
             .then(() => {
@@ -79,6 +114,21 @@ User.deleteMany({})
                     validated: true
                 }) 
                 u1.save();
+                const catProbl = new Category({
+                    name: "Problems",
+                    depart: Depart4._id
+                })
+                catProbl.save()
+                const catDeploy = new Category({
+                    name: "Deployments",
+                    depart: Depart4._id
+                })
+                catDeploy.save()
+                const catEnv = new Category({
+                    name: "Enviroments",
+                    depart: Depart4._id
+                })
+                catEnv.save()
             });
             
             

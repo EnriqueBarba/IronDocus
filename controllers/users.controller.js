@@ -120,7 +120,7 @@ module.exports.create = (req, res, next) => {
 	newUser.save()
 		.then(
 			user => {
-				res.redirect('/users');
+				res.redirect('/login');
 			}
 		).catch(
 			error => {

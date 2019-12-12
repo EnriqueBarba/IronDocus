@@ -5,6 +5,9 @@ const departSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Department name is required'],
         trim: true
+    }, 
+    flag:{
+        type: String
     }
 }, { timestamps: true })
 
