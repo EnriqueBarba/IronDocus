@@ -5,5 +5,13 @@ const User = require('../models/user.model');
 const Depart = require('../models/depart.model');
 
 module.exports.findCategories = (req, res, next) => {
-    return "HOLA"
+    const departId = req.currentUser.depart
+    console.log(departId)
+    Cat.find({depart: departId})
+    .then(results => {
+        const cats = []
+        results.forEach( e => cats.push(e) )
+        res.json({cats})
+    })
+    .catch(next)
 }
