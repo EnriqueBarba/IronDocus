@@ -5,11 +5,25 @@
         <a class="nav-link" href="#">IronDocus <i class="fa fa-folder-open-o" aria-hidden="true"></i></a>
       </li>
       {{#if currentUser}}
-      <li class="nav-item">
-        <a class="nav-link" href="#">Finance</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Accounts and Finances
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Insurances</a>
+          <a class="dropdown-item" href="#">Budgets</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">HR</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Human Resources
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Holidays</a>
+          <a class="dropdown-item" href="#">CVs</a>
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
