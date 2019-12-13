@@ -73,6 +73,7 @@ module.exports.doLogin = (req, res, next) => {
   const { email, password } = req.body
   if (email && password) {
     User.findOne({ email, validated: true })
+      .populate('depart')
       .then(user => {
         if (user) {
           user.checkPassword(password)

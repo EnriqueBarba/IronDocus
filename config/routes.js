@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/users.controller')
+const docsController = require('../controllers/doc.controller')
+const catController = require('../controllers/cat.controller')
 const authMiddleware = require('../middlewares/auth.middleware')
 const upload = require('../config/cloudinary.config');
 
@@ -13,6 +15,12 @@ router.get('/admin/decline/:userId', authMiddleware.isAdmin, usersController.adm
 
 router.get('/users/new', authMiddleware.isNotAuthenticated, usersController.new)
 router.post('/users/new', authMiddleware.isNotAuthenticated, usersController.create)
+
+router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
+router.post('/documents/new', authMiddleware.isAuthenticated, docsController.doNew)
+router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
+
+router.get('/findCategories', authMiddleware.isAuthenticated, catController.findCategories)
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
