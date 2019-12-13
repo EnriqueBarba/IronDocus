@@ -92,7 +92,7 @@ User.deleteMany({})
                         content: '',
                         files: '',
                         author: u3._id,
-                        category: cat1._id
+                        category: catDB._id
                     })
                     docu1.save()
                 });

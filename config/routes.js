@@ -3,6 +3,7 @@ const router = express.Router();
 const usersController = require('../controllers/users.controller')
 const docsController = require('../controllers/doc.controller')
 const catController = require('../controllers/cat.controller')
+const departController = require('../controllers/depart.controller')
 const authMiddleware = require('../middlewares/auth.middleware')
 const upload = require('../config/cloudinary.config');
 
@@ -21,6 +22,7 @@ router.post('/documents/new', authMiddleware.isAuthenticated, docsController.doN
 router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
 
 router.get('/findCategories', authMiddleware.isAuthenticated, catController.findCategories)
+router.get('/findDepartments', authMiddleware.isAuthenticated, departController.findDepartments)
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
