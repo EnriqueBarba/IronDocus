@@ -1,40 +1,45 @@
-<div class="d-flex justify-content-center text-center">
+<div class="d-flex justify-content-center">
+    
     <div class="row">
-{{#if doc.isNew}}
-    <div class="col-12">
-        <h1>New document</h1>
-    </div>
-    <div class="col-12">
-    <form action="/documents/new" method="POST">
-{{else}}
-    <div class="col-12">
-        <h1>Edit document</h1>
-    </div>
-    <div class="col-12">
-    <form action="/documents/{{doc._id}}/edit" method="POST">
-{{/if}}
-        <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="">
-        </div>
-        <div class="form-group">
-            <!-- <depart> -->
-            <label for="depart">Department:</label>
-            <select name="depart" id="listDepart" onchange="getCategories(this.options[this.selectedIndex].value)">
-            </select>
-        </div>
-        <div class="form-group">
-            <!-- category -->
-            <label for="category">Category:</label>
-            <select name="category" id="listCat" >
-            </select> 
-        </div>
-        <div class="form-group">
-            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        <div class="col col-12 text-center mt-3 mb-3">
+        {{#if doc.isNew}} <h1>New document</h1>{{else}}  <h1>Edit document</h1>{{/if}}
         </div>
 
-    </form>
+        <div class="col col-12">
+            <form {{#if doc.isNew}} action="/documents/new" {{else}} action="/documents/{{doc._id}}/edit" {{/if}} method="POST">
+
+                <div class="form-group">
+                    <label for="title"><b>Title:</b></label>
+                    <input class="form-control" type="text" name="title" id="">
+                </div>
+                <div class="form-group">
+                    <!-- <depart> -->
+                    <label for="depart"><b>Department:</b></label>
+                    <select class="form-control" name="depart" id="listDepart" onchange="getCategories(this.options[this.selectedIndex].value)">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <!-- category -->
+                    <label for="category"><b>Category:</b></label>
+                    <select class="form-control" name="category" id="listCat" >
+                    </select> 
+                </div>
+        </div>
+        <div class="col col-12">
+                <div class="row">
+                    <div class="col col-6 form-group mt-3">
+                        <h4 class="mb-3 text-center"><u>Document md:</u></h4>
+                        <textarea class="form-control" name="content" id="content" cols="70" rows="25"></textarea>
+                    </div>
+                    <div class="col col-6 form-group mt-3">
+                        <h4 class="mb-3 text-center"><u>Preview:</u></h4>
+                        <div id="doc-result"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<script type="text/javascript" src="../js/requests.js"></script>
+    <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+    <script type="text/javascript" src="../js/requests.js"></script>
+    <script type="text/javascript" src="../js/docu.js"></script>
 </div>
