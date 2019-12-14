@@ -17,7 +17,7 @@ module.exports.doNew = (req, res, next) => {
     const newDocu = new Docu({
         title: req.body.title,
         content: req.body.content,
-        files: req.file ? req.file.url : udnefined,
+        files: req.file ? req.file.url : undefined,
         author: req.currentUser._id,
         category: req.body.category
     })
