@@ -133,6 +133,41 @@ module.exports.create = (req, res, next) => {
  
 }
 
+
+module.exports.edit = (req, res) => {
+  const userId = req.currentUser._id
+  const userDepart = req.currentUser.depart
+  User.findOne({_id: userId})
+		.then(
+			user => {
+				res.render('users/edit', { user: user });
+			}
+		).catch(
+			error => next(error)
+    );
+}
+
+module.exports.doEdit = (req, res, next) => {
+	User.findById(req.currentUser._id)
+		.then(user => {
+			if (user) {
+        user.fullname = req.body.fullname
+        user.email = req.body.email
+        user.avatar = req.body.avatar
+        user.save();
+				res.redirect('/')
+			} else {
+				console.log("test");
+				next(createError(404, `user not found`));
+			}
+		})
+		.catch(error => {
+			if (error instanceof mongoose.Error.ValidationError) {
+			}
+			next(error);
+		})
+};
+
 module.exports.logOut = (req, res, next) => {
   req.session.destroy();
   res.redirect('/login');
