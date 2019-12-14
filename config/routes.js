@@ -21,6 +21,7 @@ router.post('/users/edit', authMiddleware.isAuthenticated, usersController.doEdi
 
 router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
 router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.doNew)
+router.get('/documents/:catFlag/:docId', authMiddleware.isAuthenticated, docsController.show)
 router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
 router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 

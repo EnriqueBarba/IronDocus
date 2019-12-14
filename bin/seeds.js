@@ -98,6 +98,7 @@ User.deleteMany({})
                                     content: '',
                                     files: '',
                                     author: u3._id,
+                                    depart: Depart3._id,
                                     category: catDB._id
                                 })
                                 docu1.save()
