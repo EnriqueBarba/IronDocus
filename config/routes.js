@@ -18,7 +18,7 @@ router.get('/users/new', authMiddleware.isNotAuthenticated, usersController.new)
 router.post('/users/new', authMiddleware.isNotAuthenticated, usersController.create)
 
 router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
-router.post('/documents/new', authMiddleware.isAuthenticated, docsController.doNew)
+router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.doNew)
 router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
 router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 
