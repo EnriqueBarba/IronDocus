@@ -6,7 +6,6 @@ const Depart = require('../models/depart.model');
 
 module.exports.findCategories = (req, res, next) => {
     const departId = req.query.depId
-    console.log('departID: ' +departId)
     Cat.find({depart: departId})
     .then(results => {
         const cats = []

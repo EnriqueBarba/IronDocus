@@ -47,5 +47,5 @@ a.docuCard {
 a.docuCard:hover {
     text-decoration: none;
     color:black;
-    box-shadow:  blue 2px 1px 5px;
+    box-shadow:  blue 0px 0px 6px;
 }
