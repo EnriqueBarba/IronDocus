@@ -18,12 +18,14 @@ User.deleteMany({})
             
             const catIns = new Category({
                 name: "Insurances",
-                depart: Depart1._id
+                depart: Depart1._id, 
+                flag: "Insurances"
             })
             catIns.save()
             const catBudget = new Category({
                 name: "Budgets",
-                depart: Depart1._id
+                depart: Depart1._id, 
+                flag: "Budgets"
             })
             catBudget.save()
 
@@ -34,12 +36,14 @@ User.deleteMany({})
             Depart2.save();
             const catHol = new Category({
                 name: "Holidays",
-                depart: Depart2._id
+                depart: Depart2._id, 
+                flag: "Holidays"
             })
             catHol.save()
             const catCV = new Category({
                 name: "CVs",
-                depart: Depart2._id
+                depart: Depart2._id, 
+                flag: "CVs"
             })
             catCV.save()
 
@@ -73,17 +77,20 @@ User.deleteMany({})
 
                 const catSoft = new Category({
                     name: "Software",
-                    depart: Depart3._id
+                    depart: Depart3._id, 
+                    flag: "Software"
                 })
                 catSoft.save()
                 const catBugs = new Category({
                     name: "Bugs Fix",
-                    depart: Depart3._id
+                    depart: Depart3._id, 
+                    flag: "BugsFlix"
                 })
                 catBugs.save()
                 const catDB = new Category({
                     name: "Database",
-                    depart: Depart3._id
+                    depart: Depart3._id, 
+                    flag: "Database"
                 })
                 catDB.save()
                 .then( () => {
@@ -116,17 +123,20 @@ User.deleteMany({})
                 u1.save();
                 const catProbl = new Category({
                     name: "Problems",
-                    depart: Depart4._id
+                    depart: Depart4._id, 
+                    flag: "Problems"
                 })
                 catProbl.save()
                 const catDeploy = new Category({
                     name: "Deployments",
-                    depart: Depart4._id
+                    depart: Depart4._id, 
+                    flag: "Deployments"
                 })
                 catDeploy.save()
                 const catEnv = new Category({
                     name: "Enviroments",
-                    depart: Depart4._id
+                    depart: Depart4._id, 
+                    flag: "Enviroments"
                 })
                 catEnv.save()
             });
