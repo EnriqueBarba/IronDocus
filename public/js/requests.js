@@ -12,7 +12,7 @@ function getCategories(id) {
         list.innerHTML = list.innerHTML + `<option value="${e._id}">${e.name}</option>`
       });
       const docCat = document.getElementById('docCatId').value
-      if ( docCat !== 0) {
+      if ( docCat !== "0") {
         list.querySelector(`option[value="${docCat}"]`).selected = true
       }
     })
@@ -28,7 +28,7 @@ function getDepartments() {
         list.innerHTML = list.innerHTML + `<option value="${e._id}">${e.name}</option>`
       });
       const docDep = document.getElementById('docDepId').value
-      if ( docDep !== 0) {
+      if ( docDep !== "0") {
         list.querySelector(`option[value="${docDep}"]`).selected = true
         getCategories(docDep)
       } else {
