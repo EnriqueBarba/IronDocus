@@ -84,7 +84,7 @@ User.deleteMany({})
                 const catBugs = new Category({
                     name: "Bugs Fix",
                     depart: Depart3._id, 
-                    flag: "BugsFlix"
+                    flag: "BugsFix"
                 })
                 catBugs.save()
                 const catDB = new Category({

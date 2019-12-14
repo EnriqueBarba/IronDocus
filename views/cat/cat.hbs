@@ -1,0 +1,16 @@
+<h1 class="text-center mt-2">Welcome <i>{{currentUser.fullname}}</i></h1>
+
+<div class="col col-12 mb-2 mt-2">
+    <a href="documents/new" class="btn btn-success"><i class="fa fa-plus"></i> New Document</a>
+</div>
+
+
+<div class="d-flex flex-row justify-content-around">
+    {{#if docs}}
+        {{#each docs as |doc|}}
+            {{>docuCard doc}}
+        {{/each}}
+    {{else}}
+        <h5>No documents found</h5>
+    {{/if}}
+</div>

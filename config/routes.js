@@ -20,9 +20,12 @@ router.post('/users/new', authMiddleware.isNotAuthenticated, usersController.cre
 router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
 router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.doNew)
 router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
+router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 
 router.get('/findCategories', authMiddleware.isAuthenticated, catController.findCategories)
 router.get('/findDepartments', authMiddleware.isAuthenticated, departController.findDepartments)
+
+
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)
