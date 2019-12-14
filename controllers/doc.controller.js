@@ -13,7 +13,7 @@ module.exports.new = (req, res, next) => {
 }
 
 module.exports.doNew = (req, res, next) => {
-    //console.log(req.body)
+    
     const newDocu = new Docu({
         title: req.body.title,
         content: req.body.content,
@@ -21,7 +21,6 @@ module.exports.doNew = (req, res, next) => {
         author: req.currentUser._id,
         category: req.body.category
     })
-    //console.log('Docu: '+ newDocu)
     newDocu.save()
     .then(() => {
         req.session.genericSuccess = 'Document saved!'
@@ -37,10 +36,8 @@ module.exports.edit = (req, res, next) => {
 
 module.exports.findByCat = (req, res, next) => {
     const catFlag = req.params.catFlag
-    console.log(catFlag)
     Cat.findOne({ flag: catFlag })
         .then(cat => {
-            console.log(cat)
             if (cat) {
                 Docu.find({ category: cat._id })
                     .populate('author')

@@ -6,7 +6,6 @@ function getCategories(id) {
   removeCats();
   axios.get(`/findCategories`, { params:{depId:id} })
     .then(response => {
-      console.log(response.data)
       const data = response.data
       const list = document.getElementById('listCat')
       data.cats.forEach(e => {
@@ -18,8 +17,7 @@ function getCategories(id) {
 
 function getDepartments() {
   axios.get(`/findDepartments`)
-    .then(response => {
-      console.log(response.data)
+    .then(response => { 
       const data = response.data
       const list = document.getElementById('listDepart')
       data.departs.forEach(e => {
