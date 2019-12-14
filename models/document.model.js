@@ -18,6 +18,11 @@ const documentSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    depart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Depart',
+        required: true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',

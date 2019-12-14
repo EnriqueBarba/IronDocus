@@ -19,6 +19,7 @@ module.exports.doNew = (req, res, next) => {
         content: req.body.content,
         files: req.file ? req.file.url : undefined,
         author: req.currentUser._id,
+        depart: req.body.depart,
         category: req.body.category
     })
     newDocu.save()
@@ -28,6 +29,21 @@ module.exports.doNew = (req, res, next) => {
     })
     .catch(next)
 
+}
+
+module.exports.show = (req, res, next) => {
+    const docId = req.params.docId;
+    
+    Docu.findById(docId)
+    .then(doc =>  {
+        if (doc) {
+            res.render('docs/form', {doc})
+        } else {
+            req.genericError = 'Ups, document not found'
+            res.redirect('/')
+        }
+    })
+    .catch(next)
 }
 
 module.exports.edit = (req, res, next) => {
