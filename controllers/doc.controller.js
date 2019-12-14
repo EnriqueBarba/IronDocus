@@ -47,6 +47,7 @@ module.exports.show = (req, res, next) => {
 }
 
 module.exports.edit = (req, res, next) => {
+    req.genericSuccess = 'Still developing'
     res.redirect('/')
 }
 
