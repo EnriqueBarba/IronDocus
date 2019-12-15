@@ -47,11 +47,7 @@
                 </div>
                 <div class="col col-12 mb-3 mt-3">
                     <div class="row">
-                        {{#if doc.isNew}}
-                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i class="fa fa-save"> Save</button>
-                        {{else}}
-                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i class="fa fa-save"> Edit</button>
-                        {{/if}}
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i class="fa fa-save"> {{#if doc.isNew}}Save{{else}}Edit{{/if}}</button>
                     </div>
                 </div>
             </form>
