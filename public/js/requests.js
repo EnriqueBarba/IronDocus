@@ -1,7 +1,3 @@
-window.onload = function() {
-  getDepartments()
-}
-
 function getCategories(id) {
   removeCats();
   axios.get(`/findCategories`, { params:{depId:id} })
