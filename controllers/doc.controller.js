@@ -47,8 +47,26 @@ module.exports.show = (req, res, next) => {
 }
 
 module.exports.edit = (req, res, next) => {
-    req.genericSuccess = 'Still developing'
-    res.redirect('/')
+    const docId = req.params.docId;
+    Docu.findById(docId)
+    .then(doc =>  {
+        if (doc) {
+            doc.title = req.body.title
+            doc.content = req.body.content
+            doc.depart = req.body.depart
+            doc.category = req.body.category
+            doc.save()
+            .then(()=>{
+                req.genericSuccess = 'Document modified!'
+                res.redirect('/')
+            })
+            .catch(next)
+        } else {
+            req.genericError = `Ups, document couldn't be updated!`
+            res.redirect('/')
+        }
+    })
+    .catch(next)
 }
 
 module.exports.findByCat = (req, res, next) => {

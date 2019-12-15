@@ -6,7 +6,7 @@
         {{#if doc.isNew}} <h1>New document</h1>{{else}} <h1>Edit document</h1>{{/if}}
         </div>
         <div class="col col-12">
-            <form {{#if doc.isNew}} action="/documents/new" {{else}} action="/documents/{{doc._id}}/edit" {{/if}} method="POST" enctype="multipart/form-data">
+            <form {{#if doc.isNew}} action="/documents/new" enctype="multipart/form-data" {{else}} action="/documents/{{doc._id}}/edit" {{/if}} method="POST" >
                 <div class="col col-12">
                     <div class="form-group">
                         <label for="title"><b>Title:</b></label>
@@ -26,7 +26,11 @@
                     </div>
                     <div class="form-group">
                         <label for="files"><b>Files:</b></label>
-                        <input type="file" name="files" id="files" accept=".jpg,.jpeg,.png"/>
+                        {{#if doc.isNew}}
+                            <input type="file" name="files" id="files" accept=".jpg,.jpeg,.png"/>
+                        {{else}}
+                            <a href="{{doc.files}}" target="_blank">File</a>
+                        {{/if}}
                     </div>
                 </div>
                 <div class="col col-12">
@@ -56,4 +60,14 @@
     <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
     <script type="text/javascript" src="/js/requests.js"></script>
     <script type="text/javascript" src="/js/docu.js"></script>
+    <script>
+        window.onload = function() {
+            getDepartments()
+            stackedit.openFile({
+                content: {
+                text: text.value
+                }
+            },true); 
+        }
+    </script>
 </div>
