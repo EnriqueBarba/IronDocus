@@ -17,7 +17,7 @@ router.get('/admin/decline/:userId', authMiddleware.isAdmin, usersController.adm
 router.get('/users/new', authMiddleware.isNotAuthenticated, usersController.new)
 router.post('/users/new', authMiddleware.isNotAuthenticated, usersController.create)
 router.get('/users/edit', authMiddleware.isAuthenticated, usersController.edit)
-router.post('/users/edit', authMiddleware.isAuthenticated, usersController.doEdit)
+router.post('/users/edit', authMiddleware.isAuthenticated, upload.single('avatar'), usersController.doEdit)
 
 router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
 router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.doNew)
