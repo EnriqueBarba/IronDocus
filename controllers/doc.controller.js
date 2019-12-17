@@ -12,7 +12,7 @@ module.exports.new = (req, res, next) => {
     res.render('docs/form', { doc })
 }
 
-module.exports.doNew = (req, res, next) => {
+module.exports.create = (req, res, next) => {
     
     const newDocu = new Docu({
         title: req.body.title,
@@ -31,9 +31,9 @@ module.exports.doNew = (req, res, next) => {
 
 }
 
-module.exports.show = (req, res, next) => {
+module.exports.edit = (req, res, next) => {
     const docId = req.params.docId;
-    
+    console.log(docId)
     Docu.findById(docId)
     .then(doc =>  {
         if (doc) {
@@ -46,7 +46,23 @@ module.exports.show = (req, res, next) => {
     .catch(next)
 }
 
-module.exports.edit = (req, res, next) => {
+module.exports.show = (req, res, next) => {
+    const docId = req.params.docId;
+    
+    Docu.findById(docId)
+    .then(doc =>  {
+        if (doc) {
+            console.log(doc)
+            res.render('docs/view', {doc})
+        } else {
+            req.genericError = 'Ups, document not found'
+            res.redirect('/')
+        }
+    })
+    .catch(next)
+}
+
+module.exports.update = (req, res, next) => {
     const docId = req.params.docId;
     Docu.findById(docId)
     .then(doc =>  {

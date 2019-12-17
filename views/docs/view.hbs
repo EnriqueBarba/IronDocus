@@ -1,0 +1,12 @@
+<div class="container">
+    <p><b>Title:</b>{{doc.title}}</p>
+    <p><b>Department:</b>{{doc.depart}}</p> 
+    <p><b>Category:</b>{{doc.category}}</p> 
+    <p><b>File:</b></p>
+    <a href="{{doc.files}}" target="_blank">File</a>
+        
+    <h4 class="mb-3 text-center"><u>Content:</u></h4>
+    <div name="content">{{doc.content}}</div>
+
+    <a class="btn btn-warning" href="/documents/{{doc.id}}/edit">Editar</a>
+</div>

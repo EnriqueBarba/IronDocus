@@ -20,9 +20,10 @@ router.get('/users/edit', authMiddleware.isAuthenticated, usersController.edit)
 router.post('/users/edit', authMiddleware.isAuthenticated, usersController.doEdit)
 
 router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
-router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.doNew)
+router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.create)
+router.get('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
 router.get('/documents/:catFlag/:docId', authMiddleware.isAuthenticated, docsController.show)
-router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
+router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.update)
 router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 
 router.get('/findCategories', authMiddleware.isAuthenticated, catController.findCategories)
