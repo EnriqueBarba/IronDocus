@@ -136,7 +136,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.edit = (req, res) => {
   const userId = req.currentUser._id
-  const userDepart = req.currentUser.depart
   User.findOne({_id: userId})
 		.then(
 			user => {
@@ -153,9 +152,17 @@ module.exports.doEdit = (req, res, next) => {
 			if (user) {
         user.fullname = req.body.fullname
         user.email = req.body.email
-        user.avatar = req.body.avatar
-        user.save();
-				res.redirect('/')
+        user.avatar = req.file ? req.file.url : "/img/undefined.png"
+        user.save()
+        .then(() =>
+          {
+            res.redirect('/')
+        })
+        .catch(
+          next
+        )
+        
+				
 			} else {
 				console.log("test");
 				next(createError(404, `user not found`));
