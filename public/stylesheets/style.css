@@ -49,3 +49,7 @@ a.docuCard:hover {
     color:black;
     box-shadow:  blue 0px 0px 6px;
 }
+
+.shForm{
+    box-shadow:  grey 0px 0px 6px;
+}
