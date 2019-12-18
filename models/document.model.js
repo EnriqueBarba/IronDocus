@@ -10,6 +10,9 @@ const documentSchema = new mongoose.Schema({
     content: {
         type: String // TOREVIEW
     },
+    contentHtml: {
+        type: String // TOREVIEW
+    },
     files: {
         type: String // TOREVIEW
     },

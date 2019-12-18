@@ -16,7 +16,7 @@ module.exports.index = (req, res, next) => {
       Docu.find( {category: {$in: cats} } )
         .populate('author')
         .populate('category')
-        .limit(5)
+        .limit(6)
         .sort( {createdAt: -1} )
         .then( docs => {
           res.render('users/index', {docs})

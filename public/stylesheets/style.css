@@ -53,3 +53,7 @@ a.docuCard:hover {
 .shForm{
     box-shadow:  grey 0px 0px 6px;
 }
+
+div#previewDiv {
+    border: 0.5px solid grey;
+}
