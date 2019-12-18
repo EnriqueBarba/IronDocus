@@ -17,6 +17,7 @@ module.exports.create = (req, res, next) => {
     const newDocu = new Docu({
         title: req.body.title,
         content: req.body.content,
+        contentHtml: req.body.contentHtml,
         files: req.file ? req.file.url : undefined,
         author: req.currentUser._id,
         depart: req.body.depart,
@@ -33,7 +34,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.edit = (req, res, next) => {
     const docId = req.params.docId;
-    console.log(docId)
     Docu.findById(docId)
     .then(doc =>  {
         if (doc) {
@@ -52,7 +52,6 @@ module.exports.show = (req, res, next) => {
     Docu.findById(docId)
     .then(doc =>  {
         if (doc) {
-            console.log(doc)
             res.render('docs/view', {doc})
         } else {
             req.genericError = 'Ups, document not found'
@@ -69,6 +68,7 @@ module.exports.update = (req, res, next) => {
         if (doc) {
             doc.title = req.body.title
             doc.content = req.body.content
+            doc.contentHtml = req.body.contentHtml
             doc.depart = req.body.depart
             doc.category = req.body.category
             doc.save()
@@ -100,7 +100,5 @@ module.exports.findByCat = (req, res, next) => {
                     .catch(next)
             }
         })
-
         .catch(next)
-
 }

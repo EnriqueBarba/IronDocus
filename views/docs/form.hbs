@@ -35,25 +35,22 @@
                 </div>
                 <div class="col col-12">
                     <div class="row">
+                        <input type="hidden" name="content" id="content" value="{{doc.content}}"/>
+                        <input type="hidden" name="contentHtml" id="contentHtml" value="{{doc.contentHtml}}"/>
+
                         <div class="col col-6 form-group mt-3">
-                            <h4 class="mb-3 text-center"><u>Document md:</u></h4>
-                            {{#if doc.isNew}}
-                                <textarea class="form-control" name="content" id="content" cols="70" rows="25"></textarea>
-                            {{else}}
-                                <textarea class="form-control" name="content" id="content" cols="70" rows="25">{{doc.content}}</textarea>
-                            {{/if}}
+                            <button class="btn btn-success" id="writeDoc"><i class="fa fa-pencil" aria-hidden="true"></i> Write</button>
                         </div>
-                        <div class="col col-6 form-group mt-3">
+                        <div class="col col-12 form-group">
                             <h4 class="mb-3 text-center"><u>Preview:</u></h4>
-                            <div id="doc-result"></div>
+                            <div class="ml-3 mr-3 p-4" id="previewDiv">{{{doc.contentHtml}}}</div>
+                        </div>
+                        <div class="col col-12 form-group mb-3 mt-3">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i class="fa fa-save"> Save</button>
                         </div>
                     </div>
                 </div>
-                <div class="col col-12 mb-3 mt-3">
-                    <div class="row">
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i class="fa fa-save"> {{#if doc.isNew}}Save{{else}}Edit{{/if}}</button>
-                    </div>
-                </div>
+
             </form>
         </div>
     </div>
@@ -63,11 +60,6 @@
     <script>
         window.onload = function() {
             getDepartments()
-            stackedit.openFile({
-                content: {
-                text: text.value
-                }
-            },true); 
         }
     </script>
 </div>
