@@ -50,6 +50,8 @@ module.exports.show = (req, res, next) => {
     const docId = req.params.docId;
     
     Docu.findById(docId)
+    .populate("depart")
+    .populate("category")
     .then(doc =>  {
         if (doc) {
             console.log(doc)

@@ -38,13 +38,13 @@ div .alert.alert-danger, .alert.alert-success {
     margin:0;
 }
 
-a.docuCard {
+a.docuCard, div.docuCard {
     text-decoration: none;
     color:black;
     box-shadow: grey 2px 1px 5px;
 }
 
-a.docuCard:hover {
+a.docuCard:hover, div.docuCard:hover {
     text-decoration: none;
     color:black;
     box-shadow:  blue 0px 0px 6px;
