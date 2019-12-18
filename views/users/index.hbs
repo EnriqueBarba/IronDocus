@@ -15,9 +15,11 @@
 
 <div class="d-flex flex-row justify-content-around">
     {{#if docs}}
+    <div class="row">
         {{#each docs as |doc|}}
             {{>docuCard doc}}
         {{/each}}
+    </div>
     {{else}}
         <h5>No documents found</h5>
     {{/if}}

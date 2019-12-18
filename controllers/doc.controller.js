@@ -5,7 +5,7 @@ const Depart = require('../models/depart.model');
 const Cat = require('../models/category.model');
 const multer = require('multer');
 const upload = multer();
-const mailer = require('../config/mailer.config');
+const mailController = require('../controllers/mailer.controller')
 
 module.exports.new = (req, res, next) => {
     const doc = new Docu();
@@ -17,13 +17,15 @@ module.exports.create = (req, res, next) => {
     const newDocu = new Docu({
         title: req.body.title,
         content: req.body.content,
+        contentHtml: req.body.contentHtml,
         files: req.file ? req.file.url : undefined,
         author: req.currentUser._id,
         depart: req.body.depart,
         category: req.body.category
     })
     newDocu.save()
-    .then(() => {
+    .then( doc => {
+        //mailController.sendNewDocMail(['ebae1991@gmail.com'], req.currentUser.fullname, doc.title)
         req.session.genericSuccess = 'Document saved!'
         res.redirect('/')
     })
@@ -33,7 +35,6 @@ module.exports.create = (req, res, next) => {
 
 module.exports.edit = (req, res, next) => {
     const docId = req.params.docId;
-    console.log(docId)
     Docu.findById(docId)
     .then(doc =>  {
         if (doc) {
@@ -54,7 +55,6 @@ module.exports.show = (req, res, next) => {
     .populate("category")
     .then(doc =>  {
         if (doc) {
-            console.log(doc)
             res.render('docs/view', {doc})
         } else {
             req.genericError = 'Ups, document not found'
@@ -71,6 +71,7 @@ module.exports.update = (req, res, next) => {
         if (doc) {
             doc.title = req.body.title
             doc.content = req.body.content
+            doc.contentHtml = req.body.contentHtml
             doc.depart = req.body.depart
             doc.category = req.body.category
             doc.save()
@@ -102,7 +103,5 @@ module.exports.findByCat = (req, res, next) => {
                     .catch(next)
             }
         })
-
         .catch(next)
-
 }
