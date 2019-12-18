@@ -5,7 +5,7 @@ const Depart = require('../models/depart.model');
 const Cat = require('../models/category.model');
 const multer = require('multer');
 const upload = multer();
-const mailer = require('../config/mailer.config');
+const mailController = require('../controllers/mailer.controller')
 
 module.exports.new = (req, res, next) => {
     const doc = new Docu();
@@ -24,7 +24,8 @@ module.exports.create = (req, res, next) => {
         category: req.body.category
     })
     newDocu.save()
-    .then(() => {
+    .then( doc => {
+        //mailController.sendNewDocMail(['ebae1991@gmail.com'], req.currentUser.fullname, doc.title)
         req.session.genericSuccess = 'Document saved!'
         res.redirect('/')
     })
