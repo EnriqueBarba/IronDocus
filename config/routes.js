@@ -4,6 +4,7 @@ const usersController = require('../controllers/users.controller')
 const docsController = require('../controllers/doc.controller')
 const catController = require('../controllers/cat.controller')
 const departController = require('../controllers/depart.controller')
+const commentsController = require('../controllers/comments.controller')
 const authMiddleware = require('../middlewares/auth.middleware')
 const upload = require('../config/cloudinary.config');
 
@@ -26,8 +27,11 @@ router.get('/documents/:catFlag/:docId', authMiddleware.isAuthenticated, docsCon
 router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.update)
 router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 
+router.post('/comments/:catFlag/:docId', authMiddleware.isAuthenticated, commentsController.addComment)
+
 router.get('/findCategories', authMiddleware.isAuthenticated, catController.findCategories)
 router.get('/findDepartments', authMiddleware.isAuthenticated, departController.findDepartments)
+router.get('/comments', authMiddleware.isAuthenticated, commentsController.showComments)
 
 
 

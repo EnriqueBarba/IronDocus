@@ -105,3 +105,4 @@ module.exports.findByCat = (req, res, next) => {
         })
         .catch(next)
 }
+
