@@ -18,7 +18,6 @@ module.exports.sendNewDocMail = (toMail, user, docTitle) => {
     })
   .then(info => console.log(info))
   .catch(error => console.log(error))
-
 }
 
 module.exports.sendModDocMail = (toMail, user, docTitle) => { 
@@ -31,15 +30,4 @@ module.exports.sendModDocMail = (toMail, user, docTitle) => {
     })
   .then(info => console.log(info))
   .catch(error => console.log(error))
-
 }
-
-/*
-  var mailOptions = {
-    from: `"IronDocus Mailer -- INFO" <IronDocus@Admin>`,
-    to: toEmail,
-    subject: subject, 
-    text: text,
-    html: '<b>Awesome Message</b>'
-};
-*/

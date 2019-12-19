@@ -3,7 +3,6 @@ const Depart = require('../models/depart.model');
 const Docu = require('../models/document.model');
 const Cat = require('../models/category.model');
 const mongoose = require('mongoose');
-const mailer = require('../config/mailer.config');
 
 
 module.exports.index = (req, res, next) => {
