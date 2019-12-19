@@ -29,7 +29,10 @@ module.exports.create = (req, res, next) => {
         req.session.genericSuccess = 'Document saved!'
         res.redirect('/')
     })
-    .catch(next)
+    .catch(err => {
+        req.session.genericError = err.message
+        res.redirect('/')
+    })
 
 }
 
@@ -40,11 +43,14 @@ module.exports.edit = (req, res, next) => {
         if (doc) {
             res.render('docs/form', {doc})
         } else {
-            req.genericError = 'Ups, document not found'
+            req.session.genericError = 'Ups, document not found'
             res.redirect('/')
         }
     })
-    .catch(next)
+    .catch(err => {
+        req.session.genericError = err.message
+        res.redirect('/')
+    })
 }
 
 module.exports.show = (req, res, next) => {
@@ -55,7 +61,7 @@ module.exports.show = (req, res, next) => {
         if (doc) {
             res.render('docs/view', {doc})
         } else {
-            req.genericError = 'Ups, document not found'
+            req.session.genericError = 'Ups, document not found'
             res.redirect('/')
         }
     })
@@ -74,12 +80,15 @@ module.exports.update = (req, res, next) => {
             doc.category = req.body.category
             doc.save()
             .then(()=>{
-                req.genericSuccess = 'Document modified!'
+                req.session.genericSuccess = 'Document modified!'
                 res.redirect('/')
             })
-            .catch(next)
+            .catch(err => {
+                req.session.genericError = err.message
+                res.redirect('/')
+            })
         } else {
-            req.genericError = `Ups, document couldn't be updated!`
+            req.session.genericError = `Ups, document couldn't be updated!`
             res.redirect('/')
         }
     })
