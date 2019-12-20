@@ -33,7 +33,9 @@
                         {{#if doc.files}}
                             <ul class="mt-2">
                             {{#each doc.files as |file|}}
-                                <li><a href="{{file}}" target="_blank">File</a></li>
+                                {{#ifCond file '!==' ''}}
+                                    <li><a href="{{file}}" target="_blank">File</a></li>
+                                {{/ifCond}}
                             {{/each}}
                             </ul>
                         {{/if}}
