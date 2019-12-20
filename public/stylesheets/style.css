@@ -58,12 +58,9 @@ a.docuCard:hover, div.docuCard:hover {
     min-height: 150px;
     border: 1px solid grey;
     box-shadow: 2px 2px 5px lightgrey;
+    padding: 1rem;
 }
 
 .title{
     font-size: large;
-}
-
-div#previewDiv {
-    border: 0.5px solid grey;
 }

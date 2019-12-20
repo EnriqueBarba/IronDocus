@@ -3,15 +3,22 @@
     <p><b class="title">Department:</b>  {{doc.depart.name}}</p>
     <p><b class="title">Category:</b>  {{doc.category.name}}</p>
     <br/>
-    <a href="{{doc.files}}" class="alert-link" target="_blank">Attached File</a>
-        
+    {{#if doc.files}}
+      <ul>
+      {{#each doc.files as |file|}}
+        {{#ifCond file '!==' ''}}
+          <li><a href="{{file}}" class="alert-link" target="_blank">Attached File</a></li>
+        {{/ifCond}}
+      {{/each}}
+      </ul>
+    {{/if}}    
     <h4 class="mb-3 text-center"><u>Content:</u></h4>
-<div class="contDoc">
-    <div name="content doc">{{doc.content}}</div>
-  </div>
+    <div class="contDoc">
+      {{{doc.contentHtml}}}
+    </div>
     <a class="btn btn-info mt-3" href="/documents/{{doc.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit  Content</a>
 
-    <h5 class="mb-4"><i class="fa fa-comments mr-3"></i>Comments</h5>
+    <h5 class="mb-4 mt-4"><i class="fa fa-comments mr-3"></i>Comments</h5>
 
     {{> commentForm doc}}
  

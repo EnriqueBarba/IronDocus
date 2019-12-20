@@ -1,7 +1,7 @@
 <div class="row mt-5">
 
     <div class="col col-4 ml-5">
-        <img src="{{user.avatar}}" alt="AVATAR">
+        <img src="{{#if user.avatar}}{{user.avatar}}{{else}}/img/undefined.png{{/if}}" alt="AVATAR">
     </div>
 
     <div class="col col-7">
@@ -31,9 +31,10 @@
                 </select>
             </div>
 
-
-            <button type="submit" class="btn btn-success">Submit</button>
-            <a href="/" class="btn btn-danger">Back to index</a>
+            <div class="form-group mt-4 d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <a href="/" class="btn btn-danger">Back to index</a>
+            </div>
 
         </form>
     </div>

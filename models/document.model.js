@@ -14,7 +14,7 @@ const documentSchema = new mongoose.Schema({
         type: String // TOREVIEW
     },
     files: {
-        type: String // TOREVIEW
+        type: [String] // TOREVIEW
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
