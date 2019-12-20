@@ -14,10 +14,10 @@ module.exports.sendNewDocMail = (toMail, user, docTitle) => {
         to: toMail,
         subject: `A new documment has been created`, 
         text: `The user "${user}" has created a new document "${docTitle}"`,
-        html: `<b>The user "${user}" has created a new document "${docTitle}"</b>`
+        html: mailBody(`<b>The user <i>"${user}"</i> has created a new document <i>"${docTitle}"</i></b>`)
     })
-  .then(info => console.log(info))
-  .catch(error => console.log(error))
+  .then(console.info)
+  .catch(console.error)
 }
 
 module.exports.sendModDocMail = (toMail, user, docTitle) => { 
@@ -26,8 +26,20 @@ module.exports.sendModDocMail = (toMail, user, docTitle) => {
         to: toMail,
         subject: `A documment of your department has been modified`, 
         text: `The user "${user}" has moddified the document "${docTitle}"`,
-        html: `<b>The user "${user}" has moddified the document "${docTitle}"</b>`
+        html: mailBody(`<p><b>The user <i>"${user}"</i> has moddified the document <i>"${docTitle}"</i></b></p>`)
     })
-  .then(info => console.log(info))
-  .catch(error => console.log(error))
+  .then(console.info)
+  .catch(console.error)
+}
+
+const mailBody = (text) => {
+  return `<div style="background-color:#80808026;text-align:center;border: 1px solid #80808026;">
+            <h1>---  <u>IronDocus</u>  ---</h1>
+            <hr style="border-color:#80808026;">
+            </br>
+            ${text}
+            </br>
+            <hr style="border-color:#80808026;">
+            <p><i>IronDocus@gmail.com</i></p>
+          </div>`
 }
