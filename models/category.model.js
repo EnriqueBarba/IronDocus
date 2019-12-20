@@ -11,6 +11,9 @@ const categorySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Depart',
         required: true
+    }, 
+    flag: {
+        type: String
     }
 }, { timestamps: true })
 

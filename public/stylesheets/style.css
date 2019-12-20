@@ -1,0 +1,59 @@
+#main-container{
+    margin:0;
+    border: 0;
+    padding: 0;
+    width:100%;
+    height: 100vh;
+    max-width: 100%;
+}
+
+#loginCont{
+    background-image: url("../img/office-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+#form-login-cont{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    max-height: 20rem
+}
+
+#signupCont{
+    background-image: url("../img/signup-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+#form-signup-cont{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+}
+
+div .alert.alert-danger, .alert.alert-success {
+    margin:0;
+}
+
+a.docuCard, div.docuCard {
+    text-decoration: none;
+    color:black;
+    box-shadow: grey 2px 1px 5px;
+}
+
+a.docuCard:hover, div.docuCard:hover {
+    text-decoration: none;
+    color:black;
+    box-shadow:  blue 0px 0px 6px;
+}
+
+.shForm{
+    box-shadow:  grey 0px 0px 6px;
+}
+
+div#previewDiv {
+    border: 0.5px solid grey;
+}

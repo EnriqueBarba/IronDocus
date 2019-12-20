@@ -1,0 +1,12 @@
+<div class="card col col-4 mb-2 mt-2 docuCard">
+    <div class="card-body">
+        <h5 class="card-title">{{this.email}}</h5>
+        <h6 class="card-subtitle">Fullname:</h6>
+        <p class="card-text">{{this.fullname}}</p>
+        <h6 class="card-subtitle">Department:</h6>
+        <p class="card-text">{{this.depart.name}}</p>
+        <hr>
+        <a href="/admin/validate/{{this._id}}" class="card-link btn btn-primary">Validate</a>
+        <a href="/admin/decline/{{this._id}}" class="card-link btn btn-danger">Decline</a>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<a href="/documents/{{this.category.flag}}/{{this._id}}" class="card col col-3 m-2 docuCard">
+    <div class="card-body">
+        <h5 class="card-title"><b>{{this.title}}</b></h5>
+        <p class="card-subtitle"><i>{{#date this.createdAt }}{{/date}}</i></p>
+        <hr>
+        <p class="card-text h6"><b>Author: </b>{{this.author.fullname}}</p>
+        <p class="card-text h6"><b>Category: </b>{{this.category.name}}</p>
+    </div>
+</a>

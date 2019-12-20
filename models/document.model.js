@@ -10,12 +10,20 @@ const documentSchema = new mongoose.Schema({
     content: {
         type: String // TOREVIEW
     },
+    contentHtml: {
+        type: String // TOREVIEW
+    },
     files: {
         type: String // TOREVIEW
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        required: true
+    },
+    depart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Depart',
         required: true
     },
     category: {
