@@ -54,6 +54,16 @@ a.docuCard:hover, div.docuCard:hover {
     box-shadow:  grey 0px 0px 6px;
 }
 
+.contDoc{
+    min-height: 150px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 5px lightgrey;
+}
+
+.title{
+    font-size: large;
+}
+
 div#previewDiv {
     border: 0.5px solid grey;
 }
