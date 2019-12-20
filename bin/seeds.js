@@ -1,3 +1,4 @@
+require('dotenv').config()
 require('../config/db.config')
 const User = require('../models/user.model')
 const Depart = require('../models/depart.model')
@@ -96,7 +97,8 @@ User.deleteMany({})
                                 const docu1 = new Docu({
                                     title: 'Document1',
                                     content: '',
-                                    files: '',
+                                    contentHtml: '',
+                                    files: [''],
                                     author: u3._id,
                                     depart: Depart3._id,
                                     category: catDB._id
@@ -112,7 +114,7 @@ User.deleteMany({})
                 Depart4.save()
                     .then(() => {
                         const u1 = new User({
-                            fullname: "admin",
+                            fullname: "Admin",
                             email: "irondocus@gmail.com",
                             password: "adminadmin",
                             avatar: "",

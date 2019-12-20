@@ -3,9 +3,11 @@ const Docu = require('../models/document.model');
 const User = require('../models/user.model');
 const Depart = require('../models/depart.model');
 const Cat = require('../models/category.model');
+const Comment = require('../models/comment.model');
 const multer = require('multer');
 const upload = multer();
 const mailController = require('../controllers/mailer.controller')
+const comController = require('../controllers/comments.controller')
 
 module.exports.new = (req, res, next) => {
     const doc = new Docu();
@@ -18,14 +20,14 @@ module.exports.create = (req, res, next) => {
         title: req.body.title,
         content: req.body.content,
         contentHtml: req.body.contentHtml,
-        files: req.file ? req.file.url : undefined,
+        files: req.file ? [req.file.url] : [''],
         author: req.currentUser._id,
         depart: req.body.depart,
         category: req.body.category
     })
     newDocu.save()
     .then( doc => {
-        //mailController.sendNewDocMail(['ebae1991@gmail.com'], req.currentUser.fullname, doc.title)
+        mailController.sendNewDocMail(['ebae1991@gmail.com','aaroninvernon96@gmail.com'], req.currentUser.fullname, doc.title)
         req.session.genericSuccess = 'Document saved!'
         res.redirect('/')
     })
@@ -67,7 +69,10 @@ module.exports.show = (req, res, next) => {
             res.redirect('/')
         }
     })
-    .catch(next)
+    .catch(err =>{
+        req.session.genericError = err.message
+        res.redirect('/')
+    })
 }
 
 module.exports.update = (req, res, next) => {
@@ -80,8 +85,14 @@ module.exports.update = (req, res, next) => {
             doc.contentHtml = req.body.contentHtml
             doc.depart = req.body.depart
             doc.category = req.body.category
+            if (req.file) {
+                console.log(req)
+                doc.files = [...doc.files, req.file.url]
+            }
             doc.save()
-            .then(()=>{
+            .then((doc)=>{
+                mailController.sendModDocMail(['ebae1991@gmail.com','aaroninvernon96@gmail.com'], req.currentUser.fullname, doc.title)
+                comController.systemComment(doc, req.currentUser)
                 req.session.genericSuccess = 'Document modified!'
                 res.redirect('/')
             })
@@ -115,3 +126,27 @@ module.exports.findByCat = (req, res, next) => {
         .catch(next)
 }
 
+module.exports.search = (req, res, next) => {
+
+    const criteria = req.body.title
+    ? {
+      title: new RegExp(req.body.title, "i")
+    }
+    : {}
+
+    Docu.find(criteria)
+        .populate("author")
+        .populate("category")
+        .then(docs =>  {
+            if (docs) {
+                res.render('cat/cat', {docs})
+            } else {
+                req.session.genericError = 'Ups, document not found'
+                res.redirect('/')
+            }
+    })
+    .catch(err =>{
+        req.session.genericError = err.message
+        res.redirect('/')
+    })
+}

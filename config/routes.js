@@ -24,7 +24,7 @@ router.get('/documents/new', authMiddleware.isAuthenticated, docsController.new)
 router.post('/documents/new', authMiddleware.isAuthenticated, upload.single('files'), docsController.create)
 router.get('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.edit)
 router.get('/documents/:catFlag/:docId', authMiddleware.isAuthenticated, docsController.show)
-router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, docsController.update)
+router.post('/documents/:docId/edit', authMiddleware.isAuthenticated, upload.single('files'), docsController.update)
 router.get('/documents/:catFlag', authMiddleware.isAuthenticated, docsController.findByCat)
 
 router.post('/comments/:catFlag/:docId', authMiddleware.isAuthenticated, commentsController.addComment)
@@ -33,7 +33,7 @@ router.get('/findCategories', authMiddleware.isAuthenticated, catController.find
 router.get('/findDepartments', authMiddleware.isAuthenticated, departController.findDepartments)
 router.get('/comments', authMiddleware.isAuthenticated, commentsController.showComments)
 
-
+router.post('/search', authMiddleware.isAuthenticated, docsController.search)
 
 router.get('/login', authMiddleware.isNotAuthenticated, usersController.login)
 router.post('/login', authMiddleware.isNotAuthenticated, usersController.doLogin)

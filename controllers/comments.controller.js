@@ -30,10 +30,33 @@ module.exports.showComments = (req, res, next) => {
   const docId = req.query.document;
   Comment.find({document:docId})
   .populate('author')
+  .sort({createdAt: -1})
   .then(results => {
     const comments = []
     results.forEach( e => comments.push(e) )
     res.json({comments})
 })
 .catch(next)
+}
+
+module.exports.systemComment = (doc, user) => {
+  User.findOne({admin:true})
+  .then(admin => {
+    if (admin){
+
+      const edditedComment = new Comment({
+        body:`Document <i>${doc.title}</i> has been modified by <i>${user.fullname}(${user.email})</i>`,
+        author: admin._id,
+        document: doc._id
+      })
+
+      edditedComment.save()
+      .then(console.info)
+      .catch(console.error)
+
+    }else{
+      console.log(`No admins found`)
+    }
+  })
+  .catch(console.error)
 }

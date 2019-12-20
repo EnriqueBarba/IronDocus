@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGODB_URI = `mongodb://${process.env.ENVIRONMENT}/iron-docus`
+const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => console.info(`Successfully connected to the database ${MONGODB_URI}`))
