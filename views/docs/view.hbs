@@ -1,33 +1,28 @@
 <div class="container">
     <h2 class="text-center mt-3">{{doc.title}}</h2>
-    <h4>Department:</h4>  {{doc.depart.name}}
-    <h4>Category: </h4> {{doc.category.name}}
+    <p><b class="title">Department:</b>  {{doc.depart.name}}</p>
+    <p><b class="title">Category:</b>  {{doc.category.name}}</p>
     <br/>
     <a href="{{doc.files}}" class="alert-link" target="_blank">Attached File</a>
         
     <h4 class="mb-3 text-center"><u>Content:</u></h4>
-    <div name="content">{{doc.content}}</div>
-
-    <a class="btn btn-info" href="/documents/{{doc.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit  Content</a>
+<div class="contDoc">
+    <div name="content doc">{{doc.content}}</div>
+  </div>
+    <a class="btn btn-info mt-3" href="/documents/{{doc.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit  Content</a>
 
     <h5 class="mb-4"><i class="fa fa-comments mr-3"></i>Comments</h5>
 
     {{> commentForm doc}}
-    
-    {{!-- {{#each doc.comments as |c|}}
-      <div class="mb-3 border-bottom pb-3">
-        <p class="card-subtitle mb-2 text-muted">{{date c.createdAt}}</p>
-        <i>{{c.author.fullname}}</i>
-        <p>{{c.body}}</p>
-      </div>
-    {{/each}} --}}
+ 
     <input type="hidden" value="{{doc.id}}" id="docuId">
     <div id="commentCont">
       
     </div>
-  </div>
+
 
 </div>
+
 <script type="text/javascript" src="/js/comment.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded",() => {

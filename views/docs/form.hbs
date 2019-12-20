@@ -5,7 +5,7 @@
         <div class="col col-12 text-center mt-3 mb-3">
         {{#if doc.isNew}} <h1>New document</h1>{{else}} <h1>Edit document</h1>{{/if}}
         </div>
-        <div class="col col-12">
+        <div class="col col-12 contDoc">
             <form {{#if doc.isNew}} action="/documents/new" enctype="multipart/form-data" {{else}} action="/documents/{{doc._id}}/edit" {{/if}} method="POST" >
                 <div class="col col-12">
                     <div class="form-group">
