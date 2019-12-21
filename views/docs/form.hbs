@@ -30,15 +30,13 @@
                             <input type="file" class="custom-file-input" id="files" accept=".jpg,.jpeg,.png" name="files" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="files">Attach</label>
                         </div>
-                        {{#if doc.files}}
+                         {{#each doc.files as |file|}}
                             <ul class="mt-2">
-                            {{#each doc.files as |file|}}
                                 {{#ifCond file '!==' ''}}
                                     <li><a href="{{file}}" target="_blank">File</a></li>
                                 {{/ifCond}}
-                            {{/each}}
                             </ul>
-                        {{/if}}
+                        {{/each}}
                     </div>
                 </div>
                 <div class="col col-12">
