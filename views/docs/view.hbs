@@ -3,15 +3,13 @@
     <p><b class="title">Department:</b>  {{doc.depart.name}}</p>
     <p><b class="title">Category:</b>  {{doc.category.name}}</p>
     <br/>
-    {{#if doc.files}}
-      <ul>
       {{#each doc.files as |file|}}
+      <ul>
         {{#ifCond file '!==' ''}}
           <li><a href="{{file}}" class="alert-link" target="_blank">Attached File</a></li>
         {{/ifCond}}
+      </ul> 
       {{/each}}
-      </ul>
-    {{/if}}    
     <h4 class="mb-3 text-center"><u>Content:</u></h4>
     <div class="contDoc">
       {{{doc.contentHtml}}}
