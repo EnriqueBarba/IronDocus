@@ -27,7 +27,7 @@ module.exports.create = (req, res, next) => {
     })
     newDocu.save()
     .then( doc => {
-        mailController.sendNewDocMail(['ebae1991@gmail.com','aaroninvernon96@gmail.com'], req.currentUser.fullname, doc.title)
+        mailController.sendNewDocMail(['irondocus@gmail.com'], req.currentUser.fullname, doc.title)
         req.session.genericSuccess = 'Document saved!'
         res.redirect('/')
     })
@@ -91,7 +91,7 @@ module.exports.update = (req, res, next) => {
             }
             doc.save()
             .then((doc)=>{
-                mailController.sendModDocMail(['ebae1991@gmail.com','aaroninvernon96@gmail.com'], req.currentUser.fullname, doc.title)
+                mailController.sendModDocMail(['irondocus@gmail.com'], req.currentUser.fullname, doc.title)
                 comController.systemComment(doc, req.currentUser)
                 req.session.genericSuccess = 'Document modified!'
                 res.redirect('/')
